@@ -5,6 +5,7 @@ namespace MyGame1
     public class SpawnPoint : AttackableObject
     {
         public MyTimer SpawnTimer = new MyTimer(4400);
+
         public SpawnPoint(string path, Vector2 pos, Vector2 dims, int ownerId) : base(path, pos, dims, ownerId)
         {
             IsDead = false;

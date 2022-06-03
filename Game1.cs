@@ -93,12 +93,12 @@ namespace MyGame1
             base.Update(gameTime);
         }
 
-        public virtual void ChangeGameState(object newState)
+        public void ChangeGameState(object newState)
         {
             Global.GameState = Convert.ToInt32(newState);
         }
 
-        public virtual void ExitGame(object INFO)
+        public void ExitGame(object INFO)
         {
             Exit();
         }

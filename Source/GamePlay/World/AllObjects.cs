@@ -20,7 +20,7 @@ namespace MyGame1
             Buildings = new List<Building>();
         }
 
-        public virtual void Update(AllObjects enemy, Vector2 offset)
+        public void Update(AllObjects enemy, Vector2 offset)
         {
             if(Hero != null)
              Hero.Update(offset);
@@ -64,21 +64,21 @@ namespace MyGame1
             }
         }
 
-        public virtual void AddBuilding(object info)
+        public void AddBuilding(object info)
         {
             var tempBuilding = (Building)info;
             tempBuilding.OwnerId = Id;
             Buildings.Add((Building)info);
         }
 
-        public virtual void AddUnit(object info)
+        public void AddUnit(object info)
         {
             var tempUnit = (Unit)info;
             tempUnit.OwnerId = Id;
             Units.Add((Unit)info);
         }
 
-        public virtual void AddSpawnPoint(object info)
+        public void AddSpawnPoint(object info)
         {
             var tempSpawnPoint = (SpawnPoint)info;
             tempSpawnPoint.OwnerId = Id;
@@ -90,7 +90,7 @@ namespace MyGame1
 
         }
 
-        public virtual List<AttackableObject> GetAllObjects()
+        public List<AttackableObject> GetAllObjects()
         {
             var tempObjects = new List<AttackableObject>();
             tempObjects.AddRange(Units.ToList<AttackableObject>());
@@ -99,7 +99,7 @@ namespace MyGame1
             return tempObjects;
         }
 
-        public virtual void Draw(Vector2 offset)
+        public void Draw(Vector2 offset)
         {
             for (var i = 0; i < SpawnPoints.Count; i++)
             {

@@ -19,7 +19,7 @@ namespace MyGame1
             previousPressedKeys = new List<MyKey>();
         }
 
-        public virtual void Update()
+        public void Update()
         {
             newKeyboard = Keyboard.GetState();
 
@@ -74,7 +74,7 @@ namespace MyGame1
         }
 
 
-        public virtual void GetPressedKeys()
+        public void GetPressedKeys()
         {
             pressedKeys.Clear();
             for (int i = 0; i < newKeyboard.GetPressedKeys().Length; i++)

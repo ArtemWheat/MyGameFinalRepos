@@ -6,7 +6,7 @@ namespace MyGame1
     public class World
     {
         public Vector2 Offset { get; set; }
-        public User User { get;  }
+        public User User { get; }
 
         private readonly UI ui;
         private readonly List<Projectile2d> projectiles;
@@ -85,7 +85,7 @@ namespace MyGame1
             ui.Update(this);
         }
 
-        public virtual void AddMob(object INFO)
+        public void AddMob(object INFO)
         {
             var tempUnit = (Unit)INFO;
 
@@ -96,7 +96,7 @@ namespace MyGame1
                 aiPlayer.AddUnit(tempUnit);
         }
 
-        public virtual void AddBuilding(object INFO)
+        public void AddBuilding(object INFO)
         {
             var tempBuilding = (Building)INFO;
 
@@ -107,13 +107,13 @@ namespace MyGame1
                 aiPlayer.AddBuilding(tempBuilding);
         }
 
-        public virtual void AddProjectile(object INFO)
+        public void AddProjectile(object INFO)
         {
             projectiles.Add((Projectile2d)INFO);
 
         }
         
-        public virtual void AddSpawnPoint(object INFO)
+        public void AddSpawnPoint(object INFO)
         {
             var tempSpawnPoint = (SpawnPoint)INFO;
 
@@ -126,7 +126,7 @@ namespace MyGame1
            
         }
 
-        public virtual void CheckScroll(object INPUT)
+        public void CheckScroll(object INPUT)
         {
             var tempPos = (Vector2)INPUT;
             if (tempPos.X < -Offset.X + (Global.ScreenWidth * .5f))
@@ -150,7 +150,7 @@ namespace MyGame1
             }
         }
 
-        public virtual void Draw(Vector2 OFFSET)
+        public void Draw(Vector2 OFFSET)
         {
             tiles.Draw(Offset);
 

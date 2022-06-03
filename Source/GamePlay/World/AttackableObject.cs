@@ -26,7 +26,7 @@ namespace MyGame1
             base.Update(offset);
         }
 
-        public virtual void GetHit(float damage)
+        public void GetHit(float damage)
         {
             Health -= damage;
             if (Health <= 0)

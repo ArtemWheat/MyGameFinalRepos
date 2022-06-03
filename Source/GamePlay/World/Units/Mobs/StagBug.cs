@@ -27,7 +27,7 @@ namespace MyGame1
             base.Update(offset, enemy);
         }
 
-        public virtual void SpawnEggSac()
+        public void SpawnEggSac()
         {
             GameGlobal.PassSpawnPoint(new SpiderEggSac(Pos, OwnerId));
         }

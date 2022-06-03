@@ -34,7 +34,7 @@ namespace MyGame1
                 Done = true;
         }
 
-        public virtual bool HitSomething(List<AttackableObject> units)
+        public bool HitSomething(List<AttackableObject> units)
         {
             for (var i = 0; i < units.Count; i++)
             {

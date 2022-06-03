@@ -15,7 +15,7 @@
             MakePrint(this.key);
         }
 
-        public virtual void Update()
+        public void Update()
         {
             state = 2;
         }

@@ -44,9 +44,9 @@ namespace MyGame1
             oldMousePos = GetScreenPos(oldMouse);
         }
 
-        public virtual float GetDistanceFromClick() => Global.GetDistance(newMousePos, firstMousePos);
+        public float GetDistanceFromClick() => Global.GetDistance(newMousePos, firstMousePos);
 
-        public virtual void GetMouseAndAdjust()
+        public void GetMouseAndAdjust()
         {
             newMouse = Mouse.GetState();
             newMousePos = GetScreenPos(newMouse);
@@ -57,7 +57,7 @@ namespace MyGame1
 
         public Vector2 GetScreenPos(MouseState MOUSE) => new Vector2(MOUSE.Position.X, MOUSE.Position.Y);
 
-        public virtual bool LeftClick()
+        public bool LeftClick()
         {
             if( newMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed 
                 && oldMouse.LeftButton != Microsoft.Xna.Framework.Input.ButtonState.Pressed
@@ -68,7 +68,7 @@ namespace MyGame1
             return false;
         }
 
-        public virtual bool LeftClickHold()
+        public bool LeftClickHold()
         {
             bool holding = false;
 
@@ -83,7 +83,7 @@ namespace MyGame1
             return holding;
         }
 
-        public virtual bool LeftClickRelease()
+        public bool LeftClickRelease()
         {
             if(newMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released 
                 && oldMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
@@ -92,7 +92,7 @@ namespace MyGame1
             return false;
         }
 
-        public virtual bool RightClick()
+        public bool RightClick()
         {
             if(newMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed 
                 && oldMouse.RightButton != Microsoft.Xna.Framework.Input.ButtonState.Pressed 
@@ -103,7 +103,7 @@ namespace MyGame1
             return false;
         }
 
-        public virtual bool RightClickHold()
+        public bool RightClickHold()
         {
             bool holding = false;
 
@@ -118,7 +118,7 @@ namespace MyGame1
             return holding;
         }
 
-        public virtual bool RightClickRelease()
+        public bool RightClickRelease()
         {
             if( newMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Released 
                 && oldMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)

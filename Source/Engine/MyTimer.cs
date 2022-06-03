@@ -39,7 +39,7 @@ namespace MyGame1
             timer += TimeSpan.FromTicks((long)(Global.GameTime.ElapsedGameTime.Ticks * speed));
         }
 
-        public virtual void AddToTimer(int msec)
+        public void AddToTimer(int msec)
         {
             timer += TimeSpan.FromMilliseconds((long)(msec));
         }
@@ -79,7 +79,7 @@ namespace MyGame1
             goodToGo = false;
         }
 
-        public virtual XElement ReturnXML()
+        public XElement ReturnXML()
         {
             XElement xml= new XElement("Timer",
                                     new XElement("mSec", mSec),
@@ -95,7 +95,7 @@ namespace MyGame1
             timer = time;
         }
 
-        public virtual void SetTimer(int msec)
+        public void SetTimer(int msec)
         {
             timer = TimeSpan.FromMilliseconds((long)(msec));
         }

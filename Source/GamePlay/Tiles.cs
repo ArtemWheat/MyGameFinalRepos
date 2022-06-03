@@ -33,7 +33,7 @@ namespace MyGame1
             hummock = new Basic2d("Hummock", new Vector2(1200, 600), new Vector2(100));
         }
 
-        public virtual void Draw(Vector2 Offset)
+        public void Draw(Vector2 Offset)
         {
             bkgBorderUp.Draw(Offset);
             bkgBorderRight.Draw(Offset);

@@ -13,7 +13,7 @@ namespace MyGame1
             ResetWorld(null);
         }
 
-        public virtual void Update()
+        public void Update()
         {
             
             world.Update();
@@ -25,12 +25,12 @@ namespace MyGame1
                 
         }
 
-        public virtual void ResetWorld(object info)
+        public void ResetWorld(object info)
         {
             world = new World(ResetWorld, ChangeGameState);
         }
 
-        public virtual void Draw()
+        public void Draw()
         {
             world.Draw(Vector2.Zero);
         }
