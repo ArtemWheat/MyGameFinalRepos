@@ -13,9 +13,7 @@ namespace MyGame1
     public class Global
     {
         public static int ScreenWidth, ScreenHeight, GameState = 0;
-
         public static Random Rnd = new Random();
-
         public static ContentManager Content;
         public static SpriteBatch _spriteBatch;
         public static Effect NormalEffect;
@@ -28,7 +26,7 @@ namespace MyGame1
 
         public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed) //тернанрный
         {
-            float dist = GetDistance(pos, focus);
+            var dist = GetDistance(pos, focus);
 
             if (dist <= speed)
             {
@@ -56,8 +54,6 @@ namespace MyGame1
             }
 
             angle = (float)Math.Asin(sineTheta);
-
-            //Drawing diagonial lines here.
             //Quadrant 2
             if (pos.X - focus.X > 0 && pos.Y - focus.Y > 0)
             {
@@ -93,7 +89,6 @@ namespace MyGame1
             {
                 angle = (float)Math.PI;
             }
-            
             return angle;
         }
     }

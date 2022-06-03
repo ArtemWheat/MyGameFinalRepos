@@ -38,13 +38,6 @@ namespace MyGame1
                     
                 //IsDead = true;
             }
-
-        }
-
-
-        public override void Draw(Vector2 OFFSET)
-        {
-            base.Draw(OFFSET);
         }
     }
 }

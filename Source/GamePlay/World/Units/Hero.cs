@@ -135,10 +135,5 @@ namespace MyGame1
 
             base.Update(offset);
         }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
-        }
     }
 }

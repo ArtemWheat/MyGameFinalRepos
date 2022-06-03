@@ -13,11 +13,6 @@ namespace MyGame1
             HealthMax = Health;
         }
 
-        public override void Update(Vector2 offset)
-        {
-            base.Update(offset);
-        }
-
         public override void SpawnMob()
         {
             var num = Global.Rnd.Next(0,11);
@@ -32,11 +27,6 @@ namespace MyGame1
             }
             if(tempMob != null)
                 GameGlobal.PassMobs(tempMob);
-        }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
         }
     }
 }

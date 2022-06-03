@@ -128,10 +128,6 @@ namespace MyGame1
             {
                 units[i].Draw(offset);
             }
-
-            
-
-
         }
     }
 }

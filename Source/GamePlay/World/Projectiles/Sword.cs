@@ -13,15 +13,5 @@ namespace MyGame1
             Speed = 20f;
             Timer = new MyTimer(70);
         }
-
-        public override void Update(Vector2 offset, List<AttackableObject> units)
-        {
-            base.Update(offset, units);
-        }
-
-        public override void Draw(Vector2 pffset)
-        {
-            base.Draw(pffset);
-        }
     }
 }

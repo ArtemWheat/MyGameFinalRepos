@@ -8,7 +8,7 @@ namespace MyGame1
     public class SpiderEggSac : SpawnPoint
     {
         int MaxSpawns, TotalSpawns;
-        public SpiderEggSac(Vector2 pos, int ownerId) : base("Egg", pos, new Vector2(50,50), ownerId)
+        public SpiderEggSac(Vector2 pos, int ownerId) : base("Egg", pos, new Vector2(50, 50), ownerId)
         {
             TotalSpawns = 0;
             MaxSpawns = 3;
@@ -17,14 +17,9 @@ namespace MyGame1
             SpawnTimer = new MyTimer(6000);
         }
 
-        public override void Update(Vector2 offset)
-        {
-            base.Update(offset);
-        }
-
         public override void SpawnMob()
         {
-            
+
             var tempMob = new Spiderling(Pos, OwnerId);
             if (tempMob != null)
             {
@@ -35,11 +30,6 @@ namespace MyGame1
                     IsDead = true;
                 }
             }
-        }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
         }
     }
 }

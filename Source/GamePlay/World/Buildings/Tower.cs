@@ -13,15 +13,5 @@ namespace MyGame1
             HealthMax = Health;
             HitDistance = 50.0f;
         }
-
-        public override void Update(Vector2 offset, Player enemy)
-        {
-            base.Update(offset);
-        }
-
-        public override void Draw(Vector2 OFFSET)
-        {
-            base.Draw(OFFSET);
-        }
     }
 }

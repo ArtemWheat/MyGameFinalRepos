@@ -15,11 +15,6 @@ namespace MyGame1
             Name = "Spiderling";
         }
 
-        public override void Update(Vector2 offset, Player enemy)
-        {
-            base.Update(offset, enemy);
-        }
-        
         public override void AI(Player enemy)
         {
             Building temp = null;
@@ -40,11 +35,6 @@ namespace MyGame1
                     IsDead = true;
                 }
             }
-        }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
         }
     }
 }

@@ -13,16 +13,5 @@ namespace MyGame1
             Speed = 2f;
             Name = "Imp";
         }
-
-        /*public override void Update(Vector2 OFFSET, Player ENEMY)
-        {
-            
-            base.Update(OFFSET, ENEMY);
-        }
-
-        public override void Draw(Vector2 OFFSET)
-        {
-            base.Draw(OFFSET);
-        }*/
     }
 }

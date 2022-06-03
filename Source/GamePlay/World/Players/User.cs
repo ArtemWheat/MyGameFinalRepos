@@ -13,10 +13,5 @@ namespace MyGame1
 
             Buildings.Add(new Tower(new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2 - 50), Id));
         }
-
-        public virtual void Update(User enemy, Vector2 offset)
-        {
-            base.Update(enemy, offset);
-        }    
     }
 }

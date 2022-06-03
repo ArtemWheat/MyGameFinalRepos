@@ -52,10 +52,5 @@ namespace MyGame1
                 GameGlobal.PassProjectile(new Arrow(Pos, this, closest.Pos));
             }
         }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
-        }
     }
 }

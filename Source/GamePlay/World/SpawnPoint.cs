@@ -34,10 +34,5 @@ namespace MyGame1
         {
             GameGlobal.PassMobs(new Imp(Pos, OwnerId));
         }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
-        }
     }
 }

@@ -12,15 +12,5 @@ namespace MyGame1
         {
             Speed = 20f;
         }
-
-        public override void Update(Vector2 offset, List<AttackableObject> units)
-        {
-            base.Update(offset, units);
-        }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
-        }
     }
 }

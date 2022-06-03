@@ -16,7 +16,7 @@ namespace MyGame1
         readonly PassObject ChangeGameState;
         public User User;
         public AIPlayer AiPlayer;
-        public SquareGrid Grid;
+        //public SquareGrid Grid;
         public Tiles Tiles;
 
         
@@ -36,7 +36,7 @@ namespace MyGame1
 
             Offset = Vector2.Zero;
 
-            Grid = new SquareGrid(new Vector2(25,25), new Vector2(-100, -100), new Vector2(1700, 1000));
+           //Grid = new SquareGrid(new Vector2(25,25), new Vector2(-100, -100), new Vector2(1700, 1000));
             Ui = new UI(this.ResetWorld);
             Tiles = new Tiles();
             
@@ -71,8 +71,8 @@ namespace MyGame1
                 ResetWorld(null);
             }
 
-            if (Grid != null)
-                Grid.Update(Offset);
+            /*if (Grid != null)
+                Grid.Update(Offset);*/
 
             if (Global.Keyboard.GetSinglePress("Back"))
             {
@@ -92,7 +92,7 @@ namespace MyGame1
 
             if (Global.Keyboard.GetSinglePress("G"))
             {
-                Grid.showGrid = !Grid.showGrid;
+                //Grid.showGrid = !Grid.showGrid;
             }
 
             Ui.Update(this);
@@ -166,7 +166,7 @@ namespace MyGame1
         public virtual void Draw(Vector2 OFFSET)
         {
             Tiles.Draw(Offset);
-            Grid.DrawGrid(Offset);
+            //Grid.DrawGrid(Offset);
 
             for (var i = 0; i < Projectiles.Count; i++)
             {

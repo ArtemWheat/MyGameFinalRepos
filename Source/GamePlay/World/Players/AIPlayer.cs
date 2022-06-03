@@ -19,16 +19,6 @@ namespace MyGame1
             SpawnPoints[SpawnPoints.Count - 1].SpawnTimer.AddToTimer(1000);
         }
 
-        public virtual void Update(AIPlayer enemy, Vector2 offset)
-        {
-            base.Update(enemy, offset);
-        }
-
-        /*public override void AddUnit(object INFO)
-        {
-            units.Add((Unit)INFO);
-        }*/
-
         public override void ChangeScore(int score)
         {
             GameGlobal.Score += score;

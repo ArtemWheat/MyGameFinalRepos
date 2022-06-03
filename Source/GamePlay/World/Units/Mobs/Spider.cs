@@ -34,10 +34,5 @@ namespace MyGame1
         {
             GameGlobal.PassSpawnPoint(new SpiderEggSac(Pos, OwnerId));
         }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
-        }
     }
 }
