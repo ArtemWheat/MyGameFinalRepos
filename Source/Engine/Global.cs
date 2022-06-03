@@ -2,8 +2,6 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
@@ -24,18 +22,10 @@ namespace MyGame1
         public static float GetDistance(Vector2 position, Vector2 target)
             => (float)Math.Sqrt((position.X - target.X) * (position.X - target.X) + (position.Y - target.Y) * (position.Y - target.Y));
 
-        public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed) //тернанрный
+        public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed) 
         {
             var dist = GetDistance(pos, focus);
-
-            if (dist <= speed)
-            {
-                return focus - pos;
-            }
-            else
-            {
-                return (focus - pos) * speed / dist;
-            }
+            return dist <= speed ? focus - pos : (focus - pos) * speed / dist;
         }
 
         public static float RotateTowards(Vector2 pos, Vector2 focus)
@@ -45,7 +35,7 @@ namespace MyGame1
             if (pos.Y - focus.Y != 0)
             {
                 h = (float)Math.Sqrt(Math.Pow(pos.X - focus.X, 2) + Math.Pow(pos.Y - focus.Y, 2));
-                sineTheta = (float)(Math.Abs(pos.Y - focus.Y) / h); //* ((item.Pos.Y-focus.Y)/(Math.Abs(item.Pos.Y-focus.Y))));
+                sineTheta = (float)(Math.Abs(pos.Y - focus.Y) / h);
             }
             else
             {

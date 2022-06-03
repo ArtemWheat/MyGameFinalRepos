@@ -1,15 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
-    public class ArrowTower : Building
+    public class Turret : Building
     {
         int Range;
         MyTimer ShotTimer = new MyTimer(1200);
-        public ArrowTower(Vector2 pos, int ownerId) : base("Turret", pos, new Vector2(100,100), ownerId)
+        public Turret(Vector2 pos, int ownerId) : base("Turret", pos, new Vector2(100,100), ownerId)
         {
             Range = 220;
             Health = 5;
@@ -17,7 +14,7 @@ namespace MyGame1
             HitDistance = 50.0f;
         }
 
-        public override void Update(Vector2 offset, Player enemy)
+        public override void Update(Vector2 offset, AllObjects enemy)
         {
             ShotTimer.UpdateTimer();
             if (ShotTimer.Test())
@@ -30,7 +27,7 @@ namespace MyGame1
             
         }
 
-        public virtual void FireArrow(Vector2 offset, Player enemy)
+        public virtual void FireArrow(Vector2 offset, AllObjects enemy)
         {
             float closesDist = Range;
             float currentDist = 0.0f;
@@ -49,7 +46,7 @@ namespace MyGame1
             if (closest != null)
             {
                 Rotate = Global.RotateTowards(Pos, closest.Pos - offset);
-                GameGlobal.PassProjectile(new Arrow(Pos, this, closest.Pos));
+                GameGlobal.PassProjectile(new CoreTurret(Pos, this, closest.Pos));
             }
         }
     }

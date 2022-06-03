@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
-
     public class Hero : Unit
     {
         public int CostArrowTower;
@@ -65,7 +62,7 @@ namespace MyGame1
 
             if ((Global.Keyboard.GetSinglePress("Q") || Global.Mouse.RightClick()) && GameGlobal.Score >= CostArrowTower)
             {
-                GameGlobal.PassBuilding(new ArrowTower(new Vector2(Pos.X + 30, Pos.Y - 30), OwnerId));
+                GameGlobal.PassBuilding(new Turret(new Vector2(Pos.X + 30, Pos.Y - 30), OwnerId));
                 GameGlobal.Score -= CostArrowTower;
                 CostArrowTower += 10; // выводить на экран
             }
@@ -81,8 +78,6 @@ namespace MyGame1
                 if(OwnerProjectiles[1])
                     ProjectilesType = 1;
             }
-
-
 
             if (Global.Keyboard.GetSinglePress("D1"))
                 ProjectilesType = 0;
@@ -114,7 +109,7 @@ namespace MyGame1
                         GameGlobal.PassProjectile(new Sword(Pos, this, Global.Mouse.newMousePos - offset));
                         break;
                     case 1:
-                        GameGlobal.PassProjectile(new Bow(Pos, this, Global.Mouse.newMousePos - offset));
+                        GameGlobal.PassProjectile(new Pistol(Pos, this, Global.Mouse.newMousePos - offset));
                         break;
                 }
             }
@@ -126,13 +121,11 @@ namespace MyGame1
                     timerCrossbow.UpdateTimer();
                     if (timerCrossbow.Test())
                     {
-                        GameGlobal.PassProjectile(new Crossbow(Pos, this, Global.Mouse.newMousePos - offset));
+                        GameGlobal.PassProjectile(new MachineGun(Pos, this, Global.Mouse.newMousePos - offset));
                         timerCrossbow.ResetToZero();
                     }
                 }
             }
-
-
             base.Update(offset);
         }
     }

@@ -10,9 +10,7 @@ namespace MyGame1
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
         GamePlay gamePlay;
-
         Basic2d mainMenuStart;
         Basic2d mainMenuExit;
         Basic2d cursor;

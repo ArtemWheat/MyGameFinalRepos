@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
@@ -19,11 +16,11 @@ namespace MyGame1
             Mob tempMob = null;
             if (num < 5)
             {
-                tempMob = new Imp(Pos, OwnerId);
+                tempMob = new Bug(Pos, OwnerId);
             }
             else if (num < 8)
             {
-                tempMob = new Spider(Pos, OwnerId);
+                tempMob = new StagBug(Pos, OwnerId);
             }
             if(tempMob != null)
                 GameGlobal.PassMobs(tempMob);

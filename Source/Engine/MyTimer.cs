@@ -1,11 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
 
 namespace MyGame1
 {
@@ -36,8 +30,6 @@ namespace MyGame1
         {
             get { return (int)timer.TotalMilliseconds; }
         }
-
-        
 
         public void UpdateTimer()
         {

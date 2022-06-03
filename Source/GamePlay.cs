@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
@@ -37,7 +34,5 @@ namespace MyGame1
         {
             world.Draw(Vector2.Zero);
         }
-
-       
     }
 }

@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MyGame1
 {
-    public class Player
+    public class AllObjects
     {
         public int Id;
         public List<Unit> units = new List<Unit>();
@@ -14,12 +12,12 @@ namespace MyGame1
         public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
         public List<Building> Buildings = new List<Building>();
 
-        public Player(int id)
+        public AllObjects(int id)
         {
             Id = id;
         }
 
-        public virtual void Update(Player enemy, Vector2 offset)
+        public virtual void Update(AllObjects enemy, Vector2 offset)
         {
             if(Hero != null)
              Hero.Update(offset);

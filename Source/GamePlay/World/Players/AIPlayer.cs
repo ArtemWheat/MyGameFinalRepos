@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
-    public class AIPlayer : Player
+    public class AIPlayer : AllObjects
     {
         public AIPlayer(int id) : base(id)
         {

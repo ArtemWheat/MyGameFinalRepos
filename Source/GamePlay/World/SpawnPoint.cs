@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyGame1
 {
@@ -32,7 +29,7 @@ namespace MyGame1
 
         public virtual void SpawnMob()
         {
-            GameGlobal.PassMobs(new Imp(Pos, OwnerId));
+            GameGlobal.PassMobs(new Bug(Pos, OwnerId));
         }
     }
 }

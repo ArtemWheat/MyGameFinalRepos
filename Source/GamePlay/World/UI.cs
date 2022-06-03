@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MyGame1
 {
@@ -15,7 +12,7 @@ namespace MyGame1
         public QuantityDisplayBar HealthTowerBar;
         public Basic2d WeaponBar;
 
-        public UI(PassObject RESET)
+        public UI()
         {
             PauseOverlay = new Basic2d("Pause", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(300,300));
             Font = Global.Content.Load<SpriteFont>("Fonts//Arial16");

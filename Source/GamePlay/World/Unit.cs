@@ -12,15 +12,5 @@ namespace MyGame1
         {
             
         }
-
-       /* public override void Update(Vector2 offset, Player enemy)
-        {
-            base.Update(offset);
-        }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
-        }*/
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MyGame1
 {
-    public class Tower : Building
+    public class Statue : Building
     {
-        public Tower(Vector2 pos, int ownerId) : base("Statue", pos, new Vector2(100,100), ownerId)
+        public Statue(Vector2 pos, int ownerId) : base("Statue", pos, new Vector2(100,100), ownerId)
         {
             Health = 20;
             HealthMax = Health;

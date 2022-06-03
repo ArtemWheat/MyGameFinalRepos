@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyGame1
+﻿namespace MyGame1
 {
     public class GameGlobal
     {
