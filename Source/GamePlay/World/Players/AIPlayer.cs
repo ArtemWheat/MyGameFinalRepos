@@ -2,7 +2,7 @@
 
 namespace MyGame1
 {
-    public class AIPlayer : AllObjects
+    public class AIPlayer : Player
     {
         public AIPlayer(int id) : base(id)
         {

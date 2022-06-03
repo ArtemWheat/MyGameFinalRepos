@@ -1,26 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MyGame1
 {
     public class Mob : Unit
     {
         private MyTimer timerHit;
-        
+
         public Mob(string PATH, Vector2 POS, Vector2 DIMS, int OWNERID) : base(PATH, POS, DIMS, OWNERID)
         {
             Speed = 0.1f;
             timerHit = new MyTimer(100);
         }
 
-        public override void Update(Vector2 OFFSET, AllObjects ENEMY)
+        public override void Update(Vector2 OFFSET, Player ENEMY)
         {
             AI(ENEMY);
             base.Update(OFFSET);
         }
 
-        public virtual void AI(AllObjects ENEMY)
+        public virtual void AI(Player ENEMY)
         {
-            Pos += Global.RadialMovement(ENEMY.Hero.Pos, Pos, Speed );
+            Pos += Global.RadialMovement(ENEMY.Hero.Pos, Pos, Speed);
             Rotate = Global.RotateTowards(Pos, ENEMY.Hero.Pos);
             if (Global.GetDistance(Pos, ENEMY.Hero.Pos) < 15)
             {
@@ -32,5 +33,5 @@ namespace MyGame1
                 }
             }
         }
-    }
+    }   
 }

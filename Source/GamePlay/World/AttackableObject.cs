@@ -21,7 +21,7 @@ namespace MyGame1
             HitDistance = 35.0f;
         }
 
-        public virtual void Update(Vector2 offset, AllObjects enemy)
+        public virtual void Update(Vector2 offset, Player enemy)
         {
             base.Update(offset);
         }

@@ -2,7 +2,7 @@
 
 namespace MyGame1
 {
-    public class User : AllObjects
+    public class User : Player
     {
         public User(int id) : base(id)
         {

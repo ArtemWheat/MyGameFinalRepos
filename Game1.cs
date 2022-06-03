@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +15,8 @@ namespace MyGame1
         private Basic2d mainMenuExit;
         private Basic2d cursor;
         private Dictionary<int, bool> menuState;
+        private Song song;
+        private bool isPlaySong;
 
         public Game1()
         {
@@ -53,6 +56,15 @@ namespace MyGame1
             mainMenuStart = new Basic2d("MainMenuStart",new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth,Global.ScreenHeight));
             mainMenuExit = new Basic2d("MainMenuExit", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
             gamePlay = new GamePlay(ChangeGameState);
+            song = Global.Content.Load<Song>("VoodoPeople");
+
+            
+
+        }
+        
+        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
+        {
+            MediaPlayer.Volume -= 0.1f;
         }
 
         protected override void Update(GameTime gameTime)
@@ -64,9 +76,19 @@ namespace MyGame1
             Global.Keyboard.Update();
             Global.Mouse.Update();
 
+            if (Global.GameState == 1 && !isPlaySong)
+            {
+                MediaPlayer.Play(song);
+                isPlaySong = true;
+                // повторять после завершения
+                MediaPlayer.IsRepeating = true;
+                // прикрепляем обработчик изменения состояния проигрывания мелодии
+                MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+            }
 
             if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[0])
                 ChangeGameState(1);
+
 
             if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[1])
                 ExitGame(null);

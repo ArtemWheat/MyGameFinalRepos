@@ -16,7 +16,7 @@ namespace MyGame1
             Name = "Spider";
         }
 
-        public override void Update(Vector2 offset, AllObjects enemy)
+        public override void Update(Vector2 offset, Player enemy)
         {
             spawnTimer.UpdateTimer();
             if (spawnTimer.Test())

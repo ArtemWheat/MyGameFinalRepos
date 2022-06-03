@@ -15,11 +15,13 @@ namespace MyGame1
         private readonly PassObject ChangeGameState;
         private readonly AIPlayer aiPlayer;
         private readonly Tiles tiles;
+        public static List<DeadTrace> DeadTraces { get; set; }
 
-        
+
 
         public World(PassObject ResetWorld, PassObject ChangeGameState)
         {
+            DeadTraces = new List<DeadTrace>();
             this.ResetWorld = ResetWorld;
             this.ChangeGameState = ChangeGameState;
             GameGlobal.PassProjectile = AddProjectile;
@@ -153,14 +155,16 @@ namespace MyGame1
         public void Draw(Vector2 OFFSET)
         {
             tiles.Draw(Offset);
-
+            for (var i = 0; i < DeadTraces.Count; i++)
+            {
+                DeadTraces[i].Draw(Offset);
+            }
             for (var i = 0; i < projectiles.Count; i++)
             {
                 projectiles[i].Draw(Offset);
             }
-
-            User.Draw(Offset);
             aiPlayer.Draw(Offset);
+            User.Draw(Offset);
             ui.Draw(this);
         }
 

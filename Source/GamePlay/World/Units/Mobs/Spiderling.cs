@@ -10,7 +10,7 @@ namespace MyGame1
             Name = "Spiderling";
         }
 
-        public override void AI(AllObjects enemy)
+        public override void AI(Player enemy)
         {
             Building temp = null;
             for (var i = 0; i < enemy.Buildings.Count; i++)

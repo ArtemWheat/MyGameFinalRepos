@@ -16,7 +16,8 @@ namespace MyGame1
         private TilesBkg2D bkgCorner1;
         private TilesBkg2D bkgCorner2;
         private TilesBkg2D bkgCorner3;
-        private Basic2d hummock;
+        private Basic2d hummock0;
+        private Basic2d hummock1;
 
 
         public Tiles()
@@ -30,21 +31,23 @@ namespace MyGame1
             bkgCorner1 = new TilesBkg2D("Corner1", new Vector2(1600,-150), new Vector2(50), new Vector2(50));
             bkgCorner2 = new TilesBkg2D("Corner2", new Vector2(1600, 900), new Vector2(50), new Vector2(50));
             bkgCorner3 = new TilesBkg2D("Corner3", new Vector2(-150, 900), new Vector2(50), new Vector2(50));
-            hummock = new Basic2d("Hummock", new Vector2(1200, 600), new Vector2(100));
+            hummock0 = new Basic2d("Hummock", new Vector2(600,  50), new Vector2(100));
+            hummock1 = new Basic2d("Hummock", new Vector2(1200, 600), new Vector2(100));
         }
 
-        public void Draw(Vector2 Offset)
+        public void Draw(Vector2 offset)
         {
-            bkgBorderUp.Draw(Offset);
-            bkgBorderRight.Draw(Offset);
-            bkgBorderDown.Draw(Offset);
-            bkgBorderLeft.Draw(Offset);
-            bkg.Draw(Offset);
-            bkgCorner0.Draw(Offset);
-            bkgCorner1.Draw(Offset);
-            bkgCorner2.Draw(Offset);
-            bkgCorner3.Draw(Offset);
-            hummock.Draw(Offset);
+            bkgBorderUp.Draw(offset);
+            bkgBorderRight.Draw(offset);
+            bkgBorderDown.Draw(offset);
+            bkgBorderLeft.Draw(offset);
+            bkg.Draw(offset);
+            bkgCorner0.Draw(offset);
+            bkgCorner1.Draw(offset);
+            bkgCorner2.Draw(offset);
+            bkgCorner3.Draw(offset);
+            hummock0.Draw(offset);
+            hummock1.Draw(offset);
         }
     }
 }

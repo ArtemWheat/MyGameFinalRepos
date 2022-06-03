@@ -15,7 +15,7 @@ namespace MyGame1
             shotTimer = new MyTimer(1200);
         }
 
-        public override void Update(Vector2 offset, AllObjects enemy)
+        public override void Update(Vector2 offset, Player enemy)
         {
             shotTimer.UpdateTimer();
             if (shotTimer.Test())
@@ -28,7 +28,7 @@ namespace MyGame1
             
         }
 
-        public virtual void FireArrow(Vector2 offset, AllObjects enemy)
+        public virtual void FireArrow(Vector2 offset, Player enemy)
         {
             float closesDist = range;
             float currentDist = 0.0f;
