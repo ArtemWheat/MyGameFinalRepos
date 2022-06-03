@@ -78,7 +78,8 @@ namespace MyGame1
                     GameGlobal.Score -= CostBow;
                     OwnerProjectiles[1] = true;
                 }
-                //ProjectilesType = 1;
+                if(OwnerProjectiles[1])
+                    ProjectilesType = 1;
             }
 
 
@@ -94,6 +95,8 @@ namespace MyGame1
                     GameGlobal.Score -= CostCrossBow;
                     OwnerProjectiles[2] = true;
                 }
+                if (OwnerProjectiles[2])
+                    ProjectilesType = 2;
             }
 
             if (checkScroll)

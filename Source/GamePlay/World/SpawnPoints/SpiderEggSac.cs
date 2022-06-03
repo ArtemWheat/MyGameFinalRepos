@@ -24,6 +24,7 @@ namespace MyGame1
 
         public override void SpawnMob()
         {
+            
             var tempMob = new Spiderling(Pos, OwnerId);
             if (tempMob != null)
             {

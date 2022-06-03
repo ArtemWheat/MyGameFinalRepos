@@ -16,7 +16,8 @@ namespace MyGame1
         public TilesBkg2D BkgCorner1;
         public TilesBkg2D BkgCorner2;
         public TilesBkg2D BkgCorner3;
-        //public TilesBkg2D DistantBkg;
+        public Basic2d Hummock;
+
 
         public Tiles()
         {
@@ -29,12 +30,11 @@ namespace MyGame1
             BkgCorner1 = new TilesBkg2D("Corner1", new Vector2(1600,-150), new Vector2(50), new Vector2(50));
             BkgCorner2 = new TilesBkg2D("Corner2", new Vector2(1600, 900), new Vector2(50), new Vector2(50));
             BkgCorner3 = new TilesBkg2D("Corner3", new Vector2(-150, 900), new Vector2(50), new Vector2(50));
-            //DistantBkg = new TilesBkg2D("DistantBKG", new Vector2(-1000), new Vector2(50), new Vector2(1000,1000));
+            Hummock = new Basic2d("Hummock", new Vector2(1200, 600), new Vector2(100));
         }
 
         public virtual void Draw(Vector2 Offset)
         {
-            //DistantBkg.Draw(Offset);
             BkgBorderUp.Draw(Offset);
             BkgBorderRight.Draw(Offset);
             BkgBorderDown.Draw(Offset);
@@ -44,6 +44,7 @@ namespace MyGame1
             BkgCorner1.Draw(Offset);
             BkgCorner2.Draw(Offset);
             BkgCorner3.Draw(Offset);
+            Hummock.Draw(Offset);
         }
     }
 }

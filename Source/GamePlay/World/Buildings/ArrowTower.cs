@@ -9,7 +9,7 @@ namespace MyGame1
     {
         int Range;
         MyTimer ShotTimer = new MyTimer(1200);
-        public ArrowTower(Vector2 pos, int ownerId) : base("Tower", pos, new Vector2(50,50), ownerId)
+        public ArrowTower(Vector2 pos, int ownerId) : base("Turret", pos, new Vector2(100,100), ownerId)
         {
             Range = 220;
             Health = 5;
@@ -22,13 +22,15 @@ namespace MyGame1
             ShotTimer.UpdateTimer();
             if (ShotTimer.Test())
             {
-                FireArrow(enemy);
+                FireArrow(offset,enemy);
                 ShotTimer.ResetToZero();
             }
             base.Update(offset);
+
+            
         }
 
-        public virtual void FireArrow(Player enemy)
+        public virtual void FireArrow(Vector2 offset, Player enemy)
         {
             float closesDist = Range;
             float currentDist = 0.0f;
@@ -46,6 +48,7 @@ namespace MyGame1
 
             if (closest != null)
             {
+                Rotate = Global.RotateTowards(Pos, closest.Pos - offset);
                 GameGlobal.PassProjectile(new Arrow(Pos, this, closest.Pos));
             }
         }

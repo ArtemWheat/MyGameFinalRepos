@@ -7,7 +7,7 @@ namespace MyGame1
 {
     public class Portal : SpawnPoint
     {
-        public Portal(Vector2 pos, int ownerId) : base("Portal", pos, new Vector2(50,50), ownerId)
+        public Portal(Vector2 pos, int ownerId) : base("Hole", pos, new Vector2(200,200), ownerId)
         {
             Health = 9999;
             HealthMax = Health;

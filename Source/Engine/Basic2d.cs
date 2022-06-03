@@ -12,11 +12,13 @@ namespace MyGame1
         public Vector2 Pos, Dims;
 
         public Texture2D myModel;
+        public readonly string Path;
         public Basic2d(string path, Vector2 pos, Vector2 dims)
         {
             Pos = pos;
             Dims = dims;
-            myModel = Global.Content.Load<Texture2D>(path);
+            Path = path;
+            myModel = Global.Content.Load<Texture2D>(Path);
         }
 
         public virtual void Update(Vector2 offset)

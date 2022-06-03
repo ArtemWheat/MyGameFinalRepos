@@ -7,7 +7,7 @@ namespace MyGame1
 {
     public class Tower : Building
     {
-        public Tower(Vector2 pos, int ownerId) : base("Piramid", pos, new Vector2(100,70), ownerId)
+        public Tower(Vector2 pos, int ownerId) : base("Statue", pos, new Vector2(100,100), ownerId)
         {
             Health = 20;
             HealthMax = Health;

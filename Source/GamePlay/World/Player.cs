@@ -100,8 +100,6 @@ namespace MyGame1
 
         public virtual void Draw(Vector2 offset)
         {
-           
-
             for (var i = 0; i < SpawnPoints.Count; i++)
             {
                 SpawnPoints[i].Draw(offset);
@@ -109,16 +107,29 @@ namespace MyGame1
 
             for (var i = 0; i < Buildings.Count; i++)
             {
-                Buildings[i].Draw(offset);
+                if (Buildings[i].Pos.Y > Hero.Pos.Y)
+                {
+                    if (Hero != null)
+                        Hero.Draw(offset);
+                    Buildings[i].Draw(offset);
+                }
+                else
+                {
+                    Buildings[i].Draw(offset);
+                    if (Hero != null)
+                        Hero.Draw(offset);
+                }
             }
+
+            if (Hero != null)
+                Hero.Draw(offset);
 
             for (var i = 0; i < units.Count; i++)
             {
                 units[i].Draw(offset);
             }
 
-            if (Hero != null)
-                Hero.Draw(offset);
+            
 
 
         }

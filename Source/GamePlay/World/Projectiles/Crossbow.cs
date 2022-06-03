@@ -8,7 +8,7 @@ namespace MyGame1
     public class Crossbow : Projectile2d
     {
        
-        public Crossbow(Vector2 pos, Unit owner, Vector2 target) : base("Arrow", pos, new Vector2(10, 40), owner, target)
+        public Crossbow(Vector2 pos, Unit owner, Vector2 target) : base("Core", pos, new Vector2(5, 10), owner, target)
         {
             Speed = 20f;
         }

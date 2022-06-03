@@ -9,7 +9,7 @@ namespace MyGame1
     {
         public MyTimer spawnTimer;
 
-        public Spider(Vector2 pos, int ownerId) : base("Spider", pos, new Vector2(45, 45), ownerId)
+        public Spider(Vector2 pos, int ownerId) : base("StagBug", pos, new Vector2(80, 120), ownerId)
         {
             Speed = 2f;
             Health = 3;
