@@ -27,12 +27,8 @@ namespace MyGame1
                     SpawnTimer.AddToTimer(GameGlobal.TotalScore * 2);
             }
 
-            //if(GameGlobal.totalScore / 100 >= 0)
-
             base.Update(offset);
         }
-
-
 
         public virtual void SpawnMob()
         {

@@ -16,9 +16,10 @@ namespace MyGame1
         readonly PassObject ChangeGameState;
         public User User;
         public AIPlayer AiPlayer;
-        public SquareGrid Grid; 
+        public SquareGrid Grid;
+        public Tiles Tiles;
 
-        public TilesBkg2D Bkg;
+        
 
         public World(PassObject ResetWorld, PassObject ChangeGameState)
         {
@@ -37,7 +38,8 @@ namespace MyGame1
 
             Grid = new SquareGrid(new Vector2(25,25), new Vector2(-100, -100), new Vector2(1700, 1000));
             Ui = new UI(this.ResetWorld);
-            Bkg = new TilesBkg2D("dirt", new Vector2(-100, -100), new Vector2(25,25), new Vector2(1700, 1000));
+            Tiles = new Tiles();
+            
         }
 
         public virtual void Update()
@@ -163,7 +165,7 @@ namespace MyGame1
 
         public virtual void Draw(Vector2 OFFSET)
         {
-            Bkg.Draw(Offset);
+            Tiles.Draw(Offset);
             Grid.DrawGrid(Offset);
 
             for (var i = 0; i < Projectiles.Count; i++)

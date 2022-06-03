@@ -30,7 +30,6 @@ namespace MyGame1
             this.IsMouseVisible = false;
             Global.ScreenHeight = 900;
             Global.ScreenWidth = 1600;
-           
 
             _graphics.PreferredBackBufferWidth = Global.ScreenWidth;
             _graphics.PreferredBackBufferHeight = Global.ScreenHeight;
@@ -69,8 +68,11 @@ namespace MyGame1
             Global.Mouse.Update();
 
 
-            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space"))
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[0])
                 ChangeGameState(1);
+
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[1])
+                ExitGame(null);
 
             if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("S"))
             {
@@ -107,7 +109,7 @@ namespace MyGame1
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(78,83,61));
 
             Global._spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 

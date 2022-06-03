@@ -28,8 +28,11 @@ namespace MyGame1
         public virtual void GetHit(float damage)
         {
             Health -= damage;
-            if(Health <= 0)
+            if (Health <= 0)
+            {
                 IsDead = true;
+            }
+                
         }
 
         public override void Draw(Vector2 offset)
