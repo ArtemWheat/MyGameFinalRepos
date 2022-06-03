@@ -5,12 +5,13 @@ namespace MyGame1
 {
     public class Hero : Unit
     {
-        public int CostArrowTower;
+        public int CostArrowTower { get; set; }
+        public Dictionary<int, bool> OwnerProjectiles { get; }
         public readonly int CostBow;
-        public readonly int CostCrossBow;
-        private int ProjectilesType;
-        public Dictionary<int, bool> OwnerProjectiles;
+        public readonly int CostCrossBow; 
         private MyTimer timerCrossbow;
+        private int ProjectilesType;
+
         public Hero(string PATH, Vector2 POS, Vector2 DIMS, int OWNERID) : base(PATH, POS, DIMS, OWNERID)
         {
             CostArrowTower = 50;

@@ -8,13 +8,15 @@ namespace MyGame1
     public class MyKeyboard
     {
 
-        public KeyboardState newKeyboard, oldKeyboard;
-
-        public List<MyKey> pressedKeys = new List<MyKey>(), previousPressedKeys = new List<MyKey>();
+        private KeyboardState newKeyboard;
+        private KeyboardState oldKeyboard;
+        private List<MyKey> pressedKeys;
+        private List<MyKey>  previousPressedKeys;
 
         public MyKeyboard()
         {
-
+            pressedKeys = new List<MyKey>();
+            previousPressedKeys = new List<MyKey>();
         }
 
         public virtual void Update()

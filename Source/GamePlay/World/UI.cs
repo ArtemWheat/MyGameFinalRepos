@@ -6,11 +6,11 @@ namespace MyGame1
 {
     public class UI
     {
-        public SpriteFont Font;
-        public Basic2d PauseOverlay;
-        public QuantityDisplayBar HealthBar;
-        public QuantityDisplayBar HealthTowerBar;
-        public Basic2d WeaponBar;
+        private readonly SpriteFont Font;
+        private readonly Basic2d PauseOverlay;
+        private readonly QuantityDisplayBar HealthBar;
+        private readonly QuantityDisplayBar HealthTowerBar;
+        private Basic2d WeaponBar;
 
         public UI()
         {

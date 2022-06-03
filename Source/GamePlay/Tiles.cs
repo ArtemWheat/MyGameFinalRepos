@@ -7,44 +7,44 @@ namespace MyGame1
 {
     public class Tiles
     {
-        public TilesBkg2D Bkg;
-        public TilesBkg2D BkgBorderUp;
-        public TilesBkg2D BkgBorderDown;
-        public TilesBkg2D BkgBorderRight;
-        public TilesBkg2D BkgBorderLeft;
-        public TilesBkg2D BkgCorner0;
-        public TilesBkg2D BkgCorner1;
-        public TilesBkg2D BkgCorner2;
-        public TilesBkg2D BkgCorner3;
-        public Basic2d Hummock;
+        private TilesBkg2D bkg;
+        private TilesBkg2D bkgBorderUp;
+        private TilesBkg2D bkgBorderDown;
+        private TilesBkg2D bkgBorderRight;
+        private TilesBkg2D bkgBorderLeft;
+        private TilesBkg2D bkgCorner0;
+        private TilesBkg2D bkgCorner1;
+        private TilesBkg2D bkgCorner2;
+        private TilesBkg2D bkgCorner3;
+        private Basic2d hummock;
 
 
         public Tiles()
         {
-            Bkg = new TilesBkg2D("GameBKG", new Vector2(-100, -100), new Vector2(16), new Vector2(1700, 1000));
-            BkgBorderUp = new TilesBkg2D("WallUp100", new Vector2(-100, -150), new Vector2(50), new Vector2(1700, 50));
-            BkgBorderDown = new TilesBkg2D("WallDown100", new Vector2(-100, 900), new Vector2(50), new Vector2(1700, 50));
-            BkgBorderRight = new TilesBkg2D("WallRight100", new Vector2(1600, -100), new Vector2(50), new Vector2(50, 1000));
-            BkgBorderLeft = new TilesBkg2D("WallLeft100", new Vector2(-150, -100), new Vector2(50), new Vector2(50, 1000));
-            BkgCorner0 = new TilesBkg2D("Corner0", new Vector2(-150), new Vector2(50), new Vector2(50));
-            BkgCorner1 = new TilesBkg2D("Corner1", new Vector2(1600,-150), new Vector2(50), new Vector2(50));
-            BkgCorner2 = new TilesBkg2D("Corner2", new Vector2(1600, 900), new Vector2(50), new Vector2(50));
-            BkgCorner3 = new TilesBkg2D("Corner3", new Vector2(-150, 900), new Vector2(50), new Vector2(50));
-            Hummock = new Basic2d("Hummock", new Vector2(1200, 600), new Vector2(100));
+            bkg = new TilesBkg2D("GameBKG", new Vector2(-100, -100), new Vector2(16), new Vector2(1700, 1000));
+            bkgBorderUp = new TilesBkg2D("WallUp100", new Vector2(-100, -150), new Vector2(50), new Vector2(1700, 50));
+            bkgBorderDown = new TilesBkg2D("WallDown100", new Vector2(-100, 900), new Vector2(50), new Vector2(1700, 50));
+            bkgBorderRight = new TilesBkg2D("WallRight100", new Vector2(1600, -100), new Vector2(50), new Vector2(50, 1000));
+            bkgBorderLeft = new TilesBkg2D("WallLeft100", new Vector2(-150, -100), new Vector2(50), new Vector2(50, 1000));
+            bkgCorner0 = new TilesBkg2D("Corner0", new Vector2(-150), new Vector2(50), new Vector2(50));
+            bkgCorner1 = new TilesBkg2D("Corner1", new Vector2(1600,-150), new Vector2(50), new Vector2(50));
+            bkgCorner2 = new TilesBkg2D("Corner2", new Vector2(1600, 900), new Vector2(50), new Vector2(50));
+            bkgCorner3 = new TilesBkg2D("Corner3", new Vector2(-150, 900), new Vector2(50), new Vector2(50));
+            hummock = new Basic2d("Hummock", new Vector2(1200, 600), new Vector2(100));
         }
 
         public virtual void Draw(Vector2 Offset)
         {
-            BkgBorderUp.Draw(Offset);
-            BkgBorderRight.Draw(Offset);
-            BkgBorderDown.Draw(Offset);
-            BkgBorderLeft.Draw(Offset);
-            Bkg.Draw(Offset);
-            BkgCorner0.Draw(Offset);
-            BkgCorner1.Draw(Offset);
-            BkgCorner2.Draw(Offset);
-            BkgCorner3.Draw(Offset);
-            Hummock.Draw(Offset);
+            bkgBorderUp.Draw(Offset);
+            bkgBorderRight.Draw(Offset);
+            bkgBorderDown.Draw(Offset);
+            bkgBorderLeft.Draw(Offset);
+            bkg.Draw(Offset);
+            bkgCorner0.Draw(Offset);
+            bkgCorner1.Draw(Offset);
+            bkgCorner2.Draw(Offset);
+            bkgCorner3.Draw(Offset);
+            hummock.Draw(Offset);
         }
     }
 }

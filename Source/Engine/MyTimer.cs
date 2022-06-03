@@ -5,15 +5,16 @@ namespace MyGame1
 {
     public class MyTimer
     {
-        public bool goodToGo;
-        protected int mSec;
-        protected TimeSpan timer = new TimeSpan();
+        private bool goodToGo;
+        private int mSec;
+        private TimeSpan timer;
         
 
         public MyTimer(int m)
         {
             goodToGo = false;
             mSec = m;
+            timer = new TimeSpan();
         }
         public MyTimer(int m, bool startLoader)
         {
@@ -23,13 +24,10 @@ namespace MyGame1
 
         public int MSec
         {
-            get { return mSec; }
+            get => mSec;
             set { mSec = value; }
         }
-        public int Timer
-        {
-            get { return (int)timer.TotalMilliseconds; }
-        }
+        public int Timer{ get => (int)timer.TotalMilliseconds; }
 
         public void UpdateTimer()
         {

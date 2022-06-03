@@ -6,15 +6,18 @@ namespace MyGame1
 {
     public class AllObjects
     {
-        public int Id;
-        public List<Unit> units = new List<Unit>();
-        public Hero Hero;
-        public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
-        public List<Building> Buildings = new List<Building>();
+        public int Id { get; }
+        public List<Unit> Units { get; }
+        public Hero Hero { get; set; }
+        public List<SpawnPoint> SpawnPoints{ get; set; }
+        public List<Building> Buildings { get; set; }
 
         public AllObjects(int id)
         {
             Id = id;
+            Units = new List<Unit>();
+            SpawnPoints = new List<SpawnPoint>();
+            Buildings = new List<Building>();
         }
 
         public virtual void Update(AllObjects enemy, Vector2 offset)
@@ -32,18 +35,18 @@ namespace MyGame1
                 }
             }
 
-            for (var i = 0; i < units.Count; i++)
+            for (var i = 0; i < Units.Count; i++)
             {
-                units[i].Update(offset, enemy);
-                if (units[i].IsDead)
+                Units[i].Update(offset, enemy);
+                if (Units[i].IsDead)
                 {
-                    if (units[i].Name == "Spider")
+                    if (Units[i].Name == "Spider")
                         ChangeScore(5);
                     else
                         ChangeScore(3);
 
                     GameGlobal.TotalScore++;
-                    units.RemoveAt(i);
+                    Units.RemoveAt(i);
 
                     i--;
                 }
@@ -72,7 +75,7 @@ namespace MyGame1
         {
             var tempUnit = (Unit)info;
             tempUnit.OwnerId = Id;
-            units.Add((Unit)info);
+            Units.Add((Unit)info);
         }
 
         public virtual void AddSpawnPoint(object info)
@@ -90,7 +93,7 @@ namespace MyGame1
         public virtual List<AttackableObject> GetAllObjects()
         {
             var tempObjects = new List<AttackableObject>();
-            tempObjects.AddRange(units.ToList<AttackableObject>());
+            tempObjects.AddRange(Units.ToList<AttackableObject>());
             tempObjects.AddRange(SpawnPoints.ToList<AttackableObject>());
             tempObjects.AddRange(Buildings.ToList<AttackableObject>());
             return tempObjects;
@@ -122,9 +125,9 @@ namespace MyGame1
             if (Hero != null)
                 Hero.Draw(offset);
 
-            for (var i = 0; i < units.Count; i++)
+            for (var i = 0; i < Units.Count; i++)
             {
-                units[i].Draw(offset);
+                Units[i].Draw(offset);
             }
         }
     }

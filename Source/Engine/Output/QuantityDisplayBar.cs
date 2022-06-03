@@ -5,20 +5,21 @@ namespace MyGame1
 {
     public class QuantityDisplayBar
     {
-        public int Boarder;
-        public Basic2d Bar, BarBKG;
-        public Color Color;
+        private int boarder;
+        private Basic2d bar;
+        private Basic2d barBKG;
+        private Color color;
         public QuantityDisplayBar(Vector2 dims, int boarder, Color color)
         {
-            Boarder = boarder;
-            Color = color;
-            Bar = new Basic2d("solid", new Vector2(0, 0), new Vector2(dims.X - Boarder * 2, dims.Y - Boarder * 2));
-            BarBKG = new Basic2d("shade", new Vector2(0, 0), new Vector2(dims.X - Boarder * 2, dims.Y - Boarder * 2));
+            this.boarder = boarder;
+            this.color = color;
+            bar = new Basic2d("solid", new Vector2(0, 0), new Vector2(dims.X - this.boarder * 2, dims.Y - this.boarder * 2));
+            barBKG = new Basic2d("shade", new Vector2(0, 0), new Vector2(dims.X - this.boarder * 2, dims.Y - this.boarder * 2));
         }
 
         public virtual void Update(float current, float max)
         {
-            Bar.Dims = new Vector2(current/max * (BarBKG.Dims.X - Boarder * 2), Bar.Dims.Y);
+            bar.Dims = new Vector2(current/max * (barBKG.Dims.X - boarder * 2), bar.Dims.Y);
         }
 
         public virtual void Draw(Vector2 offset)
@@ -30,12 +31,12 @@ namespace MyGame1
             Global.NormalEffect.Parameters["filterColor"].SetValue(Color.Black.ToVector4());
             Global.NormalEffect.CurrentTechnique.Passes[0].Apply();
 
-            BarBKG.Draw(offset, Vector2.Zero, Color.Black);
+            barBKG.Draw(offset, Vector2.Zero, Color.Black);
 
-            Global.NormalEffect.Parameters["filterColor"].SetValue(Color.ToVector4());
+            Global.NormalEffect.Parameters["filterColor"].SetValue(color.ToVector4());
             Global.NormalEffect.CurrentTechnique.Passes[0].Apply();
 
-            Bar.Draw(offset + new Vector2(Boarder, Boarder), Vector2.Zero, Color);
+            bar.Draw(offset + new Vector2(boarder, boarder), Vector2.Zero, color);
         }
     }
 }

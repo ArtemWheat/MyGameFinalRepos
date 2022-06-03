@@ -4,23 +4,24 @@ namespace MyGame1
 {
     public class Turret : Building
     {
-        int Range;
-        MyTimer ShotTimer = new MyTimer(1200);
+        private int range;
+        private MyTimer shotTimer;
         public Turret(Vector2 pos, int ownerId) : base("Turret", pos, new Vector2(100,100), ownerId)
         {
-            Range = 220;
+            range = 220;
             Health = 5;
             HealthMax = Health;
             HitDistance = 50.0f;
+            shotTimer = new MyTimer(1200);
         }
 
         public override void Update(Vector2 offset, AllObjects enemy)
         {
-            ShotTimer.UpdateTimer();
-            if (ShotTimer.Test())
+            shotTimer.UpdateTimer();
+            if (shotTimer.Test())
             {
                 FireArrow(offset,enemy);
-                ShotTimer.ResetToZero();
+                shotTimer.ResetToZero();
             }
             base.Update(offset);
 
@@ -29,17 +30,17 @@ namespace MyGame1
 
         public virtual void FireArrow(Vector2 offset, AllObjects enemy)
         {
-            float closesDist = Range;
+            float closesDist = range;
             float currentDist = 0.0f;
             Unit closest = null;
 
-            for (var i = 0; i < enemy.units.Count; i++)
+            for (var i = 0; i < enemy.Units.Count; i++)
             {
-                currentDist = Global.GetDistance(Pos, enemy.units[i].Pos);
+                currentDist = Global.GetDistance(Pos, enemy.Units[i].Pos);
                 if (closesDist < currentDist)
                 {
                     closesDist = currentDist;
-                    closest = enemy.units[i];
+                    closest = enemy.Units[i];
                 }
             }
 

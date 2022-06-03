@@ -1,21 +1,20 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace MyGame1
 {
     public class MyMouseControl
     {
-        public bool dragging, rightDrag;
+        public Vector2 newMousePos { get; set; }
+        public MouseState newMouse { get; set; }
+        public MouseState oldMouse { get; set; }
+        public MouseState firstMouse { get; set; }
 
-        public Vector2 newMousePos, oldMousePos, firstMousePos, newMouseAdjustedPos, systemCursorPos, screenLoc;
-
-        public MouseState newMouse, oldMouse, firstMouse;
+        private Vector2 firstMousePos;
+        private Vector2 oldMousePos;
 
         public MyMouseControl()
         {
-            dragging = false;
-
             newMouse = Mouse.GetState();
             oldMouse = newMouse;
             firstMouse = newMouse;
@@ -25,43 +24,18 @@ namespace MyGame1
             firstMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
 
             GetMouseAndAdjust();
-
-            //screenLoc = new Vector2((int)(systemCursorPos.X/Globals.screenWidth), (int)(systemCursorPos.Y/Globals.screenHeight));
-
         }
 
-        #region Properties
-
-        public MouseState First
-        {
-            get { return firstMouse; }
-        }
-
-        public MouseState New
-        {
-            get { return newMouse; }
-        }
-
-        public MouseState Old
-        {
-            get { return oldMouse; }
-        }
-
-        #endregion
 
         public void Update()
         {
             GetMouseAndAdjust();
-
-
             if(newMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed
                 && oldMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
             {
                 firstMouse = newMouse;
                 firstMousePos = newMousePos = GetScreenPos(firstMouse);
             }
-
-            
         }
 
         public void UpdateOld()
@@ -70,34 +44,18 @@ namespace MyGame1
             oldMousePos = GetScreenPos(oldMouse);
         }
 
-        public virtual float GetDistanceFromClick()
-        {
-            return Global.GetDistance(newMousePos, firstMousePos);
-        }
+        public virtual float GetDistanceFromClick() => Global.GetDistance(newMousePos, firstMousePos);
 
         public virtual void GetMouseAndAdjust()
         {
             newMouse = Mouse.GetState();
             newMousePos = GetScreenPos(newMouse);
-
         }
 
+        public int GetMouseWheelChange() => newMouse.ScrollWheelValue - oldMouse.ScrollWheelValue;
 
 
-
-        public int GetMouseWheelChange()
-        {
-            return newMouse.ScrollWheelValue - oldMouse.ScrollWheelValue;
-        }
-
-
-        public Vector2 GetScreenPos(MouseState MOUSE)
-        {
-            Vector2 tempVec = new Vector2(MOUSE.Position.X, MOUSE.Position.Y);
-
-
-            return tempVec;
-        }
+        public Vector2 GetScreenPos(MouseState MOUSE) => new Vector2(MOUSE.Position.X, MOUSE.Position.Y);
 
         public virtual bool LeftClick()
         {
@@ -105,9 +63,7 @@ namespace MyGame1
                 && oldMouse.LeftButton != Microsoft.Xna.Framework.Input.ButtonState.Pressed
                 && newMouse.Position.X >= 0 && newMouse.Position.X <= Global.ScreenWidth
                 && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Global.ScreenHeight)
-            {
                 return true;
-            }
 
             return false;
         }
@@ -120,17 +76,9 @@ namespace MyGame1
                 && oldMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed 
                 && newMouse.Position.X >= 0 && newMouse.Position.X <= Global.ScreenWidth 
                 && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Global.ScreenHeight)
-            {
                 holding = true;
 
-                if(Math.Abs(newMouse.Position.X - firstMouse.Position.X) > 8 
-                    || Math.Abs(newMouse.Position.Y - firstMouse.Position.Y) > 8)
-                {
-                    dragging = true;
-                }
-            }
 
-            
 
             return holding;
         }
@@ -139,10 +87,7 @@ namespace MyGame1
         {
             if(newMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released 
                 && oldMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-            {
-                dragging = false;
                 return true;
-            }
 
             return false;
         }
@@ -153,9 +98,7 @@ namespace MyGame1
                 && oldMouse.RightButton != Microsoft.Xna.Framework.Input.ButtonState.Pressed 
                 && newMouse.Position.X >= 0 && newMouse.Position.X <= Global.ScreenWidth 
                 && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Global.ScreenHeight)
-            {
                 return true;
-            }
 
             return false;
         }
@@ -168,15 +111,7 @@ namespace MyGame1
                 && oldMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed
                 && newMouse.Position.X >= 0 && newMouse.Position.X <= Global.ScreenWidth
                 && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Global.ScreenHeight)
-            {
                 holding = true;
-
-                if(Math.Abs(newMouse.Position.X - firstMouse.Position.X) > 8 
-                    || Math.Abs(newMouse.Position.Y - firstMouse.Position.Y) > 8)
-                {
-                    rightDrag = true;
-                }
-            }
 
 
 
@@ -187,10 +122,7 @@ namespace MyGame1
         {
             if( newMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Released 
                 && oldMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-            {
-                dragging = false;
                 return true;
-            }
 
             return false;
         }

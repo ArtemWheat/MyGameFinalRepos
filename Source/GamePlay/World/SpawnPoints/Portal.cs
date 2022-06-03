@@ -1,18 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace MyGame1
 {
     public class Portal : SpawnPoint
     {
+        private Random rnd;
         public Portal(Vector2 pos, int ownerId) : base("Hole", pos, new Vector2(200,200), ownerId)
         {
             Health = 9999;
             HealthMax = Health;
+            rnd = new Random();
         }
 
         public override void SpawnMob()
         {
-            var num = Global.Rnd.Next(0,11);
+            var num = rnd.Next(0,11);
             Mob tempMob = null;
             if (num < 5)
             {

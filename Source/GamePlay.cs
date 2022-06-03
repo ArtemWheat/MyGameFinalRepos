@@ -4,8 +4,8 @@ namespace MyGame1
 {
     public class GamePlay
     {
-        PassObject ChangeGameState;
-        World world;
+        private readonly PassObject ChangeGameState;
+        private World world;
 
         public GamePlay(PassObject ChangeGameState)
         {

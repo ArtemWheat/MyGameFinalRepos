@@ -7,7 +7,7 @@ namespace MyGame1
 {
     public class Unit : AttackableObject
     {
-        public string Name;
+        public string Name { get; set; }
         public Unit(string path, Vector2 pos, Vector2 dims, int ownerId) : base(path, pos, dims, ownerId)
         {
             

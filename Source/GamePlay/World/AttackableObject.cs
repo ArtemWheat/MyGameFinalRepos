@@ -4,9 +4,13 @@ namespace MyGame1
 {
     public class AttackableObject : Basic2d
     {
-        public bool IsDead;
-        public int OwnerId;
-        public float Speed, HitDistance, Health, HealthMax;
+        public bool IsDead { get; set; }
+        public int OwnerId{ get; set; }
+        public float Speed { get; set; }
+        public float HitDistance { get; set; }
+        public float Health { get; set; }
+        public float HealthMax { get; set; }
+
         public AttackableObject(string path, Vector2 pos, Vector2 dims, int ownerId) : base(path, pos, dims)
         {
             OwnerId = ownerId;

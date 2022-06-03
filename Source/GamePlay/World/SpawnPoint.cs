@@ -23,7 +23,6 @@ namespace MyGame1
                 if (GameGlobal.TotalScore <= 500)
                     SpawnTimer.AddToTimer(GameGlobal.TotalScore * 2);
             }
-
             base.Update(offset);
         }
 

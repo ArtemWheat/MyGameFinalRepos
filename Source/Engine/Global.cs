@@ -8,16 +8,17 @@ namespace MyGame1
     public delegate void PassObject(object i);
     public delegate Object PassObjectAndReturn(object i);
 
-    public class Global
+    public static class Global
     {
-        public static int ScreenWidth, ScreenHeight, GameState = 0;
-        public static Random Rnd = new Random();
-        public static ContentManager Content;
-        public static SpriteBatch _spriteBatch;
-        public static Effect NormalEffect;
-        public static MyKeyboard Keyboard;
-        public static MyMouseControl Mouse;
-        public static GameTime GameTime;
+        public static int ScreenWidth { get; set; }
+        public static int ScreenHeight { get; set; }
+        public static int GameState { get; set; }
+        public static ContentManager Content { get; set;  }
+        public static SpriteBatch _spriteBatch { get; set; }
+        public static Effect NormalEffect { get; set;  }
+        public static MyKeyboard Keyboard { get; set; }
+        public static MyMouseControl Mouse { get; set; }
+        public static GameTime GameTime { get; set; }
 
         public static float GetDistance(Vector2 position, Vector2 target)
             => (float)Math.Sqrt((position.X - target.X) * (position.X - target.X) + (position.Y - target.Y) * (position.Y - target.Y));

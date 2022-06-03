@@ -5,15 +5,16 @@ namespace MyGame1
 { 
     public class World
     {
-        public Vector2 Offset;
-        public UI Ui;
-        public List<Projectile2d> Projectiles = new List<Projectile2d>();
-        public List<AttackableObject> AllObjects = new List<AttackableObject>();
-        readonly PassObject ResetWorld;
-        readonly PassObject ChangeGameState;
-        public User User;
-        public AIPlayer AiPlayer;
-        public Tiles Tiles;
+        public Vector2 Offset { get; set; }
+        public User User { get;  }
+
+        private readonly UI ui;
+        private readonly List<Projectile2d> projectiles;
+        private readonly List<AttackableObject> allObjects;
+        private readonly PassObject ResetWorld;
+        private readonly PassObject ChangeGameState;
+        private readonly AIPlayer aiPlayer;
+        private readonly Tiles tiles;
 
         
 
@@ -27,11 +28,13 @@ namespace MyGame1
             GameGlobal.PassSpawnPoint = AddSpawnPoint;
             GameGlobal.PassBuilding = AddBuilding;
             GameGlobal.Paused = false;
+            projectiles = new List<Projectile2d>();
+            allObjects = new List<AttackableObject>();
             User = new User(1);
-            AiPlayer = new AIPlayer(2);
+            aiPlayer = new AIPlayer(2);
             Offset = Vector2.Zero;
-            Ui = new UI();
-            Tiles = new Tiles();
+            ui = new UI();
+            tiles = new Tiles();
         }
 
         public virtual void Update()
@@ -39,19 +42,19 @@ namespace MyGame1
             
             if (!User.Hero.IsDead && User.Buildings.Count > 0 && !GameGlobal.Paused)
             {
-                AllObjects.Clear();
-                AllObjects.AddRange(User.GetAllObjects());
-                AllObjects.AddRange(AiPlayer.GetAllObjects());
+                allObjects.Clear();
+                allObjects.AddRange(User.GetAllObjects());
+                allObjects.AddRange(aiPlayer.GetAllObjects());
 
-                AiPlayer.Update(User, Offset);
-                User.Update(AiPlayer, Offset);
+                aiPlayer.Update(User, Offset);
+                User.Update(aiPlayer, Offset);
 
-                for (var i = 0; i < Projectiles.Count; i++)
+                for (var i = 0; i < projectiles.Count; i++)
                 {
-                    Projectiles[i].Update(Offset, AllObjects);
-                    if (Projectiles[i].Done)
+                    projectiles[i].Update(Offset, allObjects);
+                    if (projectiles[i].Done)
                     {
-                        Projectiles.RemoveAt(i);
+                        projectiles.RemoveAt(i);
                         i--;
                     }
                 }
@@ -79,7 +82,7 @@ namespace MyGame1
                 GameGlobal.Paused = !GameGlobal.Paused;
             }
 
-            Ui.Update(this);
+            ui.Update(this);
         }
 
         public virtual void AddMob(object INFO)
@@ -89,8 +92,8 @@ namespace MyGame1
             if (User.Id == tempUnit.OwnerId)
                 User.AddUnit(tempUnit);
 
-            else if (AiPlayer.Id == tempUnit.OwnerId)
-                AiPlayer.AddUnit(tempUnit);
+            else if (aiPlayer.Id == tempUnit.OwnerId)
+                aiPlayer.AddUnit(tempUnit);
         }
 
         public virtual void AddBuilding(object INFO)
@@ -100,13 +103,13 @@ namespace MyGame1
             if (User.Id == tempBuilding.OwnerId)
                 User.AddBuilding(tempBuilding);
 
-            else if (AiPlayer.Id == tempBuilding.OwnerId)
-                AiPlayer.AddBuilding(tempBuilding);
+            else if (aiPlayer.Id == tempBuilding.OwnerId)
+                aiPlayer.AddBuilding(tempBuilding);
         }
 
         public virtual void AddProjectile(object INFO)
         {
-            Projectiles.Add((Projectile2d)INFO);
+            projectiles.Add((Projectile2d)INFO);
 
         }
         
@@ -117,8 +120,8 @@ namespace MyGame1
             if (User.Id == tempSpawnPoint.OwnerId)
                 User.AddUnit(tempSpawnPoint);
 
-            else if (AiPlayer.Id == tempSpawnPoint.OwnerId)
-                AiPlayer.AddSpawnPoint(tempSpawnPoint);
+            else if (aiPlayer.Id == tempSpawnPoint.OwnerId)
+                aiPlayer.AddSpawnPoint(tempSpawnPoint);
 
            
         }
@@ -149,16 +152,16 @@ namespace MyGame1
 
         public virtual void Draw(Vector2 OFFSET)
         {
-            Tiles.Draw(Offset);
+            tiles.Draw(Offset);
 
-            for (var i = 0; i < Projectiles.Count; i++)
+            for (var i = 0; i < projectiles.Count; i++)
             {
-                Projectiles[i].Draw(Offset);
+                projectiles[i].Draw(Offset);
             }
 
             User.Draw(Offset);
-            AiPlayer.Draw(Offset);
-            Ui.Draw(this);
+            aiPlayer.Draw(Offset);
+            ui.Draw(this);
         }
 
     }

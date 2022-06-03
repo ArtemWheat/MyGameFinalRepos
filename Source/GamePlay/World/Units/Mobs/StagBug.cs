@@ -4,7 +4,7 @@ namespace MyGame1
 {
     public class StagBug : Mob
     {
-        public MyTimer spawnTimer;
+        private MyTimer spawnTimer;
 
         public StagBug(Vector2 pos, int ownerId) : base("StagBug", pos, new Vector2(80, 120), ownerId)
         {

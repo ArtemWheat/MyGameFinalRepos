@@ -5,11 +5,13 @@ namespace MyGame1
 {
     public class Basic2d
     {
-        public float Rotate;
-        public Vector2 Pos, Dims;
+        protected float Rotate;
+        public Vector2 Pos { get; set; }
+        public Vector2 Dims { get; set; }
 
-        public Texture2D myModel;
-        public readonly string Path;
+        public Texture2D myModel { get; set; }
+        private readonly string Path;
+
         public Basic2d(string path, Vector2 pos, Vector2 dims)
         {
             Pos = pos;
