@@ -2,41 +2,53 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-/**//*
-namespace GameShooter
+
+namespace MyGame1
 {
     public class MainMenu
     {
-*//**//*
-public Basic2d bkg;
-public PassObject PlayClickDel, ExitClickDel;
-public List<Button2d> buttons = new List<Button2d>();
-public MainMenu(PassObject PLAYCLICKDEL, PassObject EXITCLICKDEL)
-{
-    PlayClickDel = PLAYCLICKDEL;
-    ExitClickDel = EXITCLICKDEL;
-    bkg = new Basic2d("MainMenu", new Vector2(Global.screenWidth / 2, Global.screenHeight / 2), new Vector2(Global.screenWidth, Global.screenHeight));
-    buttons.Add(new Button2d("Button", Vector2.Zero, new Vector2(96, 32), "Font//Arial16", "Play", PlayClickDel, 1));
-    buttons.Add(new Button2d("Button", Vector2.Zero, new Vector2(96, 32), "Font//Arial16", "Exit", ExitClickDel, null));
-}
+        private Basic2d mainMenuStart;
+        private Basic2d mainMenuExit;
+        private Dictionary<int, bool> menuState;
+        PassObject ChangeGameState;
+        PassObject ChangeExit;
 
+        public MainMenu(PassObject ChangeGameState, PassObject ChangeExit)
+        {
+            mainMenuStart = new Basic2d("MainMenuStart", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
+            mainMenuExit = new Basic2d("MainMenuExit", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
+            this.ChangeGameState = ChangeGameState;
+            this.ChangeExit = ChangeExit;
+            menuState = new Dictionary<int, bool>()
+            {
+                [0] = true,
+                [1] = false
+            };
+        }
 
-public virtual void Update()
-{
-    for (var i = 0; i < buttons.Count; i++)
-    {
-        buttons[i].Update(new Vector2(340, 560 + 45 * i));
+        public virtual void Update()
+        {
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("S"))
+            {
+                menuState[0] = false;
+                menuState[1] = true;
+            }
+
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("W"))
+            {
+                menuState[0] = true;
+                menuState[1] = false;
+            }
+
+        }
+
+        public virtual void Draw()
+        {
+            if (menuState[0])
+                mainMenuStart.Draw(Vector2.Zero);
+            if (menuState[1])
+                mainMenuExit.Draw(Vector2.Zero);
+        }
     }
 }
-
-public virtual void Draw()
-{
-    bkg.Draw(Vector2.Zero);
-    for (var i = 0; i < buttons.Count; i++)
-    {
-        buttons[i].Draw(new Vector2(340, 560 + 45 * i));
-    }
-}
-    }
-}*//**/
-/**//**/
+*/

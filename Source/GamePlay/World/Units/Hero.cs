@@ -70,7 +70,7 @@ namespace MyGame1
                 CostArrowTower += 10; // выводить на экран
             }
 
-            if (Global.Keyboard.GetSinglePress("D2"))
+            if (Global.Keyboard.GetSinglePress("D2") || Global.Keyboard.GetPress("D2"))
             {
                 if (GameGlobal.Score >= CostBow && !OwnerProjectiles[1])
                 {
@@ -80,6 +80,8 @@ namespace MyGame1
                 }
                 //ProjectilesType = 1;
             }
+
+
 
             if (Global.Keyboard.GetSinglePress("D1"))
                 ProjectilesType = 0;

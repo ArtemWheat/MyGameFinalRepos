@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace MyGame1
 {
@@ -11,8 +12,11 @@ namespace MyGame1
         private SpriteBatch _spriteBatch;
 
         GamePlay gamePlay;
-        //MainMenu mainMenu;
+
+        Basic2d mainMenuStart;
+        Basic2d mainMenuExit;
         Basic2d cursor;
+        private Dictionary<int, bool> menuState;
 
         public Game1()
         {
@@ -23,17 +27,20 @@ namespace MyGame1
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             this.IsMouseVisible = false;
             Global.ScreenHeight = 900;
             Global.ScreenWidth = 1600;
-            //mainMenu = new MainMenu(ChangeGameState, ExitGame);
+           
 
             _graphics.PreferredBackBufferWidth = Global.ScreenWidth;
             _graphics.PreferredBackBufferHeight = Global.ScreenHeight;
 
             _graphics.ApplyChanges();
+            menuState = new Dictionary<int, bool>()
+            {
+                [0] = true,
+                [1] = false
+            };
 
             base.Initialize();
         }
@@ -47,7 +54,8 @@ namespace MyGame1
             Global.NormalEffect = Global.Content.Load<Effect>("NormalFlat");
             Global.Keyboard = new MyKeyboard();
             Global.Mouse = new MyMouseControl();
-            //mainMenu = new MainMenu(ChangeGameState, ExitGame);
+            mainMenuStart = new Basic2d("MainMenuStart",new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth,Global.ScreenHeight));
+            mainMenuExit = new Basic2d("MainMenuExit", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
             gamePlay = new GamePlay(ChangeGameState);
         }
 
@@ -59,11 +67,26 @@ namespace MyGame1
             Global.GameTime = gameTime;
             Global.Keyboard.Update();
             Global.Mouse.Update();
-            gamePlay.Update();
-            /*if (Global.gameState == 0)
-                mainMenu.Update();
-            else if(Global.gameState == 1)
-                gamePlay.Update();*/
+
+
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space"))
+                ChangeGameState(1);
+
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("S"))
+            {
+                menuState[0] = false;
+                menuState[1] = true;
+            }
+
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("W"))
+            {
+                menuState[0] = true;
+                menuState[1] = false;
+            }
+
+
+            if (Global.GameState == 1)
+                gamePlay.Update();
 
             Global.Keyboard.UpdateOld();
             Global.Mouse.UpdateOld();
@@ -71,9 +94,9 @@ namespace MyGame1
             base.Update(gameTime);
         }
 
-        public virtual void ChangeGameState(object info)
+        public virtual void ChangeGameState(object newState)
         {
-            Global.GameState = Convert.ToInt32(info);
+            Global.GameState = Convert.ToInt32(newState);
         }
 
         public virtual void ExitGame(object INFO)
@@ -88,13 +111,18 @@ namespace MyGame1
 
             Global._spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-            /* if (Global.gameState == 0)
-                 mainMenu.Draw();
-             else if (Global.gameState == 1)
-                 gamePlay.Draw();*/
+            if (Global.GameState == 0)
+            {
+                if (menuState[0])
+                    mainMenuStart.Draw(Vector2.Zero);
+                if (menuState[1])
+                    mainMenuExit.Draw(Vector2.Zero);
+            }
+            else if (Global.GameState == 1)
+                gamePlay.Draw();
 
-            gamePlay.Draw();
-            cursor.Draw(Global.Mouse.newMousePos, Vector2.Zero, Color.White);
+            if(Global.GameState == 1)
+                cursor.Draw(Global.Mouse.newMousePos, Vector2.Zero, Color.White);
 
             Global._spriteBatch.End();
 

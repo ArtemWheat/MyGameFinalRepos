@@ -90,9 +90,25 @@ namespace MyGame1
                 new Vector2(Global.ScreenWidth / 2 - strDims.X / 2 + 70, Global.ScreenHeight - 60),
                 Color.Black);
 
-            if (!world.User.Hero.OwnerProjectiles[1] )
+            tempStr = "0";
+            strDims = Font.MeasureString(tempStr);
+            Global._spriteBatch.DrawString(Font,
+                tempStr,
+                new Vector2(Global.ScreenWidth / 2 - strDims.X / 2 - 140, Global.ScreenHeight - 60),
+                Color.Black);
+
+            if (!world.User.Hero.OwnerProjectiles[1])
             {
                 tempStr = world.User.Hero.CostBow.ToString();
+                strDims = Font.MeasureString(tempStr);
+                Global._spriteBatch.DrawString(Font,
+                    tempStr,
+                    new Vector2(Global.ScreenWidth / 2 - strDims.X / 2 - 70, Global.ScreenHeight - 60),
+                    Color.Black);
+            }
+            else
+            {
+                tempStr = "0";
                 strDims = Font.MeasureString(tempStr);
                 Global._spriteBatch.DrawString(Font,
                     tempStr,
@@ -109,6 +125,17 @@ namespace MyGame1
                     new Vector2(Global.ScreenWidth / 2 - strDims.X / 2, Global.ScreenHeight - 60),
                     Color.Black);
             }
+            else
+            {
+                tempStr = "0";
+                strDims = Font.MeasureString(tempStr);
+                Global._spriteBatch.DrawString(Font,
+                    tempStr,
+                    new Vector2(Global.ScreenWidth / 2 - strDims.X / 2, Global.ScreenHeight - 60),
+                    Color.Black);
+            }
+
+
 
 
 
