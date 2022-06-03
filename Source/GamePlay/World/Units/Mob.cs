@@ -29,7 +29,7 @@ namespace MyGame1
                 if (timerHit.Test())
                 {
                     ENEMY.Hero.GetHit(1);
-                    timerHit = new MyTimer(2000);
+                    timerHit = new MyTimer(500);
                 }
             }
         }

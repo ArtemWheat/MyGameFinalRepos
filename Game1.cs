@@ -12,7 +12,7 @@ namespace MyGame1
         private GraphicsDeviceManager _graphics;
         private GamePlay gamePlay;
         private Basic2d mainMenuStart;
-        private Basic2d mainMenuExit;
+        private Basic2d mainMenuTraining;
         private Basic2d cursor;
         private Dictionary<int, bool> menuState;
         private Song song;
@@ -53,8 +53,8 @@ namespace MyGame1
             Global.NormalEffect = Global.Content.Load<Effect>("NormalFlat");
             Global.Keyboard = new MyKeyboard();
             Global.Mouse = new MyMouseControl();
-            mainMenuStart = new Basic2d("MainMenuStart",new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth,Global.ScreenHeight));
-            mainMenuExit = new Basic2d("MainMenuExit", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
+            mainMenuStart = new Basic2d("MenuStart",new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth,Global.ScreenHeight));
+            mainMenuTraining = new Basic2d("MenuTraining", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
             gamePlay = new GamePlay(ChangeGameState);
             song = Global.Content.Load<Song>("VoodoPeople");
 
@@ -90,16 +90,13 @@ namespace MyGame1
                 ChangeGameState(1);
 
 
-            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[1])
-                ExitGame(null);
-
-            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("S"))
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("T"))
             {
                 menuState[0] = false;
                 menuState[1] = true;
             }
 
-            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("W"))
+            if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Back"))
             {
                 menuState[0] = true;
                 menuState[1] = false;
@@ -137,7 +134,7 @@ namespace MyGame1
                 if (menuState[0])
                     mainMenuStart.Draw(Vector2.Zero);
                 if (menuState[1])
-                    mainMenuExit.Draw(Vector2.Zero);
+                    mainMenuTraining.Draw(Vector2.Zero);
             }
             else if (Global.GameState == 1)
                 gamePlay.Draw();
