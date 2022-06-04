@@ -62,10 +62,7 @@ namespace MyGame1
 
         }
         
-        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
-        {
-            MediaPlayer.Volume -= 0.1f;
-        }
+       
 
         protected override void Update(GameTime gameTime)
         {
@@ -80,10 +77,10 @@ namespace MyGame1
             {
                 MediaPlayer.Play(song);
                 isPlaySong = true;
-                // повторять после завершения
+                
                 MediaPlayer.IsRepeating = true;
-                // прикрепляем обработчик изменения состояния проигрывания мелодии
-                MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
+                MediaPlayer.Volume -= 0.3f;
             }
 
             if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[0])

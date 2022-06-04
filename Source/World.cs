@@ -65,6 +65,8 @@ namespace MyGame1
             }
             else if (Global.Keyboard.GetPress("Enter") && (User.Hero.IsDead || User.Buildings.Count <= 0))
             {
+                GameGlobal.Score = 0;
+                GameGlobal.TotalScore = 0;
                 ResetWorld(null);
             }
 

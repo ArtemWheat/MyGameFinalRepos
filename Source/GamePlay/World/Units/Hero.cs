@@ -61,7 +61,7 @@ namespace MyGame1
                 checkScroll = true;
             }
 
-            if ((Global.Keyboard.GetSinglePress("Q") || Global.Mouse.RightClick()) && GameGlobal.Score >= CostArrowTower)
+            if ((Global.Keyboard.GetSinglePress("D4") || Global.Mouse.RightClick()) && GameGlobal.Score >= CostArrowTower)
             {
                 GameGlobal.PassBuilding(new Turret(new Vector2(Pos.X + 30, Pos.Y - 30), OwnerId));
                 GameGlobal.Score -= CostArrowTower;
