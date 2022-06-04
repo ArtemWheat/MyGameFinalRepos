@@ -25,20 +25,6 @@ namespace MyGame1
 
         }
 
-        public virtual bool Hover(Vector2 offset)
-        {
-            return HoverImg(offset);
-        }
-
-        public virtual bool HoverImg(Vector2 offset)
-        {
-            var mousePos = Global.Mouse.newMousePos;
-            if (mousePos.X >= (Pos.X + offset.X) - Dims.X / 2 && mousePos.X >= (Pos.X + offset.X) + Dims.X / 2
-                && mousePos.Y >= (Pos.Y + offset.Y) - Dims.Y / 2 && mousePos.Y >= (Pos.Y + offset.Y) + Dims.Y / 2)
-                return true;
-            return false;
-        }
-
         public virtual void Draw(Vector2 offset)
         {
             if (myModel != null)

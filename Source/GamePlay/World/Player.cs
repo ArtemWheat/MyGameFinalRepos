@@ -12,8 +12,6 @@ namespace MyGame1
         public List<SpawnPoint> SpawnPoints{ get; set; }
         public List<Building> Buildings { get; set; }
 
-       
-
         public Player(int id)
         {
             Id = id;
@@ -55,7 +53,6 @@ namespace MyGame1
                     i--;
                 }
             }
-
 
             for (var i = 0; i < Buildings.Count; i++)
             {

@@ -60,8 +60,6 @@ namespace MyGame1
                         i--;
                     }
                 }
-
-                
             }
             else if (Global.Keyboard.GetPress("Enter") && (User.Hero.IsDead || User.Buildings.Count <= 0))
             {
@@ -169,6 +167,5 @@ namespace MyGame1
             User.Draw(Offset);
             ui.Draw(this);
         }
-
     }
 }

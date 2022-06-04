@@ -24,8 +24,6 @@ namespace MyGame1
                 shotTimer.ResetToZero();
             }
             base.Update(offset);
-
-            
         }
 
         public virtual void FireArrow(Vector2 offset, Player enemy)

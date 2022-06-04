@@ -57,9 +57,6 @@ namespace MyGame1
             mainMenuTraining = new Basic2d("MenuTraining", new Vector2(Global.ScreenWidth / 2, Global.ScreenHeight / 2), new Vector2(Global.ScreenWidth, Global.ScreenHeight));
             gamePlay = new GamePlay(ChangeGameState);
             song = Global.Content.Load<Song>("VoodoPeople");
-
-            
-
         }
         
        
@@ -80,7 +77,7 @@ namespace MyGame1
                 
                 MediaPlayer.IsRepeating = true;
 
-                MediaPlayer.Volume -= 0.3f;
+                MediaPlayer.Volume -= 0.9f;
             }
 
             if (Global.GameState == 0 && Global.Keyboard.GetSinglePress("Space") && menuState[0])
@@ -118,8 +115,6 @@ namespace MyGame1
         {
             Exit();
         }
-
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(new Color(78,83,61));
